@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up — Stock Lens</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="form-shell">
+    <div class="form-card">
+      <div class="form-brand">
+        <div class="mark font-display">SL</div>
+        <div class="name">Stock Lens</div>
+      </div>
+
+      <h2 class="form-title">Create your account</h2>
+      <p class="form-subtitle">Start exploring AI-powered research in minutes.</p>
+
+      <div class="alert-lens" id="formAlert" role="alert"></div>
+
+      <form id="registerForm" novalidate>
+        <div class="mb-3">
+          <label for="fullName" class="lens-label">Full Name</label>
+          <input type="text" class="lens-input" id="fullName" placeholder="Jordan Sharma" autocomplete="name" required>
+          <div class="field-error" id="fullNameError">Please enter your full name.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="phone" class="lens-label">Phone Number</label>
+          <input type="tel" class="lens-input" id="phone" placeholder="98765 43210" autocomplete="tel" required>
+          <div class="field-error" id="phoneError">Please enter a valid 10-digit phone number.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="lens-label">Email</label>
+          <input type="email" class="lens-input" id="email" placeholder="you@example.com" autocomplete="email" required>
+          <div class="field-error" id="emailError">Please enter a valid email address.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="lens-label">Password</label>
+          <input type="password" class="lens-input" id="password" placeholder="At least 6 characters" autocomplete="new-password" required>
+          <div class="field-error" id="passwordError">Password must be at least 6 characters.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="confirmPassword" class="lens-label">Confirm Password</label>
+          <input type="password" class="lens-input" id="confirmPassword" placeholder="Re-enter your password" autocomplete="new-password" required>
+          <div class="field-error" id="confirmPasswordError">Passwords do not match.</div>
+        </div>
+
+        <button type="submit" class="btn-submit">Register</button>
+      </form>
+
+      <p class="form-switch-caption">Already have an account? <a href="login.html">Sign In</a></p>
+      <p class="form-switch-caption"><a href="index.html"><i class="bi bi-arrow-left"></i> Back to home</a></p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    redirectIfLoggedIn();
+
+    const form = document.getElementById("registerForm");
+    const fields = {
+      fullName: document.getElementById("fullName"),
+      phone: document.getElementById("phone"),
+      email: document.getElementById("email"),
+      password: document.getElementById("password"),
+      confirmPassword: document.getElementById("confirmPassword"),
+    };
+    const errors = {
+      fullName: document.getElementById("fullNameError"),
+      phone: document.getElementById("phoneError"),
+      email: document.getElementById("emailError"),
+      password: document.getElementById("passwordError"),
+      confirmPassword: document.getElementById("confirmPasswordError"),
+    };
+    const formAlert = document.getElementById("formAlert");
+
+    function showAlert(message, type) {
+      formAlert.textContent = message;
+      formAlert.className = `alert-lens ${type} show`;
+    }
+
+    function clearFieldStates() {
+      Object.values(fields).forEach((f) => f.classList.remove("is-invalid"));
+      Object.values(errors).forEach((e) => e.classList.remove("show"));
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      formAlert.classList.remove("show");
+      clearFieldStates();
+
+      const values = {
+        fullName: fields.fullName.value,
+        phone: fields.phone.value,
+        email: fields.email.value,
+        password: fields.password.value,
+        confirmPassword: fields.confirmPassword.value,
+      };
+
+      let hasError = false;
+      if (!values.fullName || values.fullName.trim().length < 2) {
+        fields.fullName.classList.add("is-invalid");
+        errors.fullName.classList.add("show");
+        hasError = true;
+      }
+      if (!isValidPhone(values.phone)) {
+        fields.phone.classList.add("is-invalid");
+        errors.phone.classList.add("show");
+        hasError = true;
+      }
+      if (!isValidEmail(values.email)) {
+        fields.email.classList.add("is-invalid");
+        errors.email.classList.add("show");
+        hasError = true;
+      }
+      if (!isValidPassword(values.password)) {
+        fields.password.classList.add("is-invalid");
+        errors.password.classList.add("show");
+        hasError = true;
+      }
+      if (values.password !== values.confirmPassword) {
+        fields.confirmPassword.classList.add("is-invalid");
+        errors.confirmPassword.classList.add("show");
+        hasError = true;
+      }
+      if (hasError) return;
+
+      const result = registerUser(values);
+
+      if (result.ok) {
+        showAlert(result.message, "success");
+        form.reset();
+        setTimeout(() => (window.location.href = "login.html"), 900);
+      } else {
+        showAlert(result.message, "error");
+      }
+    });
+  </script>
+</body>
+</html>
