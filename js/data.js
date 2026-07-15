@@ -19,6 +19,33 @@ const COMPANIES = [
     logoColor: "#12805C",
     description: "India's largest IT services and consulting company, delivering technology solutions across banking, retail, and manufacturing worldwide.",
     summary: "TCS combines scale with best-in-class margins in IT services. Growth is moderating with the sector, but a strong balance sheet, sticky BFSI relationships, and expanding AI-led deal wins keep the long-term thesis intact. Valuation carries a premium for that stability.",
+    snapshot: [
+      {
+        metric: "Overall AI Score",
+        value: "87 / 100",
+        insight: "Strong Fundamentals",
+      },
+      {
+        metric: "Business Quality",
+        value: "9.1 / 10",
+        insight: "Industry Leader",
+      },
+      {
+        metric: "Financial Health",
+        value: "9.0 / 10",
+        insight: "Healthy Growth",
+      },
+      {
+        metric: "Risk Score",
+        value: "3.4 / 5",
+        insight: "Moderate Risk",
+      },
+      {
+        metric: "Valuation",
+        value: "Fair",
+        insight: "Near Intrinsic Value",
+      },
+    ],
     pdf: "reports/Tata-Motors.pdf",
     price: "3,842.50",
     change: "+0.8%",
@@ -32,6 +59,33 @@ const COMPANIES = [
     logoColor: "#0E1C2E",
     description: "A global leader in next-generation digital services and consulting, helping enterprises navigate their digital transformation.",
     summary: "Infosys is navigating a choppy demand environment with disciplined cost management and steady large-deal signings. Generative AI offerings (Topaz) are an emerging growth lever, while valuation broadly tracks large-cap IT peers pending a clearer demand recovery.",
+    snapshot: [
+      {
+        metric: "Overall AI Score",
+        value: "89 / 100",
+        insight: "Excellent Fundamentals",
+      },
+      {
+        metric: "Business Quality",
+        value: "9.3 / 10",
+        insight: "Market Leader",
+      },
+      {
+        metric: "Financial Health",
+        value: "9.2 / 10",
+        insight: "Strong Balance Sheet",
+      },
+      {
+        metric: "Risk Score",
+        value: "2.4 / 5",
+        insight: "Low Risk",
+      },
+      {
+        metric: "Valuation",
+        value: "Fair",
+        insight: "Attractive for Long Term",
+      },
+    ],
     pdf: "reports/infosys.pdf",
     price: "1,612.30",
     change: "+1.2%",
@@ -45,6 +99,33 @@ const COMPANIES = [
     logoColor: "#C77D02",
     description: "A diversified conglomerate spanning energy, petrochemicals, retail, and digital services through Jio and Reliance Retail.",
     summary: "Jio's subscriber and ARPU growth plus Reliance Retail's expansion are increasingly the key value drivers, while the legacy O2C business remains more cyclical. A sum-of-the-parts lens is the most useful way to think about the current valuation.",
+    snapshot: [
+      {
+        metric: "Overall AI Score",
+        value: "91 / 100",
+        insight: "Excellent Fundamentals",
+      },
+      {
+        metric: "Business Quality",
+        value: "9.4 / 10",
+        insight: "Diversified Leader",
+      },
+      {
+        metric: "Financial Health",
+        value: "9.1 / 10",
+        insight: "Strong Cash Generation",
+      },
+      {
+        metric: "Risk Score",
+        value: "2.8 / 5",
+        insight: "Low–Moderate Risk",
+      },
+      {
+        metric: "Valuation",
+        value: "Fair",
+        insight: "Long-term Potential",
+      },
+    ],
     pdf: "reports/reliance.pdf",
     price: "2,984.75",
     change: "-0.4%",
@@ -58,6 +139,33 @@ const COMPANIES = [
     logoColor: "#12805C",
     description: "India's largest private sector bank by assets, offering retail, wholesale, and treasury banking services.",
     summary: "Post-merger integration with HDFC Ltd continues, with loan growth deliberately calibrated to normalize the credit-deposit ratio. Asset quality remains strong; the near-term story is margin normalization rather than credit risk.",
+    snapshot: [
+      {
+        metric: "Overall AI Score",
+        value: "90 / 100",
+        insight: "Excellent Fundamentals",
+      },
+      {
+        metric: "Business Quality",
+        value: "9.4 / 10",
+        insight: "Banking Leader",
+      },
+      {
+        metric: "Financial Health",
+        value: "9.3 / 10",
+        insight: "Strong Asset Quality",
+      },
+      {
+        metric: "Risk Score",
+        value: "2.3 / 5",
+        insight: "Low Risk",
+      },
+      {
+        metric: "Valuation",
+        value: "Fair",
+        insight: "Stable Growth",
+      },
+    ],
     pdf: "reports/HDFC-bank.pdf",
     price: "1,678.90",
     change: "+0.3%",
@@ -71,6 +179,33 @@ const COMPANIES = [
     logoColor: "#b7ca4b",
     description: "Sun Pharma is a leading global specialty generic company, with global revenue of US$ 6.2 billion.",
     summary: "Sun Pharmaceutical Industries Limited (d/b/a Sun Pharma) is an Indian multinational pharmaceutical company headquartered in Mumbai. It manufactures and sells pharmaceutical formulations and active pharmaceutical ingredients (APIs) in more than 100 countries.",
+    snapshot: [
+      {
+        metric: "Overall AI Score",
+        value: "88 / 100",
+        insight: "Strong Fundamentals",
+      },
+      {
+        metric: "Business Quality",
+        value: "9.0 / 10",
+        insight: "Pharma Leader",
+      },
+      {
+        metric: "Financial Health",
+        value: "8.9 / 10",
+        insight: "Stable Earnings",
+      },
+      {
+        metric: "Risk Score",
+        value: "2.7 / 5",
+        insight: "Low–Moderate Risk",
+      },
+      {
+        metric: "Valuation",
+        value: "Fair",
+        insight: "Growth Potential",
+      },
+    ],
     pdf: "reports/Sun-Pharma.pdf",
     price: "1,870.90",
     change: "+0.3%",

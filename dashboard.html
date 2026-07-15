@@ -106,16 +106,19 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <div class="d-flex align-items-baseline gap-3 mb-3">
-              <span class="font-mono fs-4 fw-semibold" id="modalPrice"></span>
-              <span class="font-mono fw-semibold" id="modalChange"></span>
+            <h2 class="h5 mb-3">Executive Snapshot</h2>
+            <div class="table-responsive">
+              <table class="table table-borderless table-striped align-middle mb-0" id="snapshotTable">
+                <thead>
+                  <tr>
+                    <th scope="col">Metric</th>
+                    <th scope="col">Value</th>
+                    <th scope="col">AI Insight</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
             </div>
-            <p class="mb-0" id="modalDescription">Company description goes here.</p>
-
-
-
-
-            <div class="modal-summary-box" id="modalSummary">Summary goes here.</div>
           </div>
           <div class="modal-footer" id="modalFooterFound">
             <button type="button" class="btn-close-modal" data-bs-dismiss="modal">Close</button>

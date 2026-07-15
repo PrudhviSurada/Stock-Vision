@@ -128,13 +128,7 @@ function openCompanyModal(company) {
   document.getElementById("modalAvatar").style.background = company.logoColor;
   document.getElementById("modalCompanyName").textContent = company.name;
   document.getElementById("modalCompanyTicker").textContent = `${company.ticker} · ${company.sector}`;
-  document.getElementById("modalDescription").textContent = company.description;
-  document.getElementById("modalSummary").textContent = company.summary;
-  document.getElementById("modalPrice").textContent = `₹${company.price}`;
-
-  const changeEl = document.getElementById("modalChange");
-  changeEl.textContent = company.change;
-  changeEl.className = company.trend === "up" ? "up" : "down";
+  renderSnapshotTable(company.snapshot);
 
   const downloadBtn = document.getElementById("downloadReportBtn");
   downloadBtn.setAttribute("data-pdf", company.pdf);
@@ -162,6 +156,21 @@ function showModal() {
   const modalEl = document.getElementById("companyModal");
   const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
   modal.show();
+}
+
+function renderSnapshotTable(snapshot = []) {
+  const tbody = document.querySelector("#snapshotTable tbody");
+  if (!tbody) return;
+  tbody.innerHTML = snapshot
+    .map(
+      (row) => `
+        <tr>
+          <td>${row.metric}</td>
+          <td>${row.value}</td>
+          <td>${row.insight}</td>
+        </tr>`
+    )
+    .join("");
 }
 
 /* ---------- download ---------- */
