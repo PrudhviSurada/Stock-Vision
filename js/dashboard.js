@@ -131,8 +131,10 @@ function openCompanyModal(company) {
   renderSnapshotTable(company.snapshot);
 
   const downloadBtn = document.getElementById("downloadReportBtn");
+  const viewBtn = document.getElementById("viewReportBtn");
   downloadBtn.setAttribute("data-pdf", company.pdf);
   downloadBtn.setAttribute("data-name", company.name);
+  if (viewBtn) viewBtn.setAttribute("data-pdf", company.pdf);
 
   document.getElementById("companyFoundBody").classList.remove("d-none");
   document.getElementById("companyNotFoundBody").classList.add("d-none");
@@ -176,21 +178,31 @@ function renderSnapshotTable(snapshot = []) {
 /* ---------- download ---------- */
 
 document.addEventListener("click", (e) => {
-  const btn = e.target.closest("#downloadReportBtn");
-  if (!btn) return;
+  const downloadBtn = e.target.closest("#downloadReportBtn");
+  const viewBtn = e.target.closest("#viewReportBtn");
 
-  const pdfPath = btn.getAttribute("data-pdf");
-  const companyName = btn.getAttribute("data-name");
-  if (!pdfPath) return;
+  if (downloadBtn) {
+    const pdfPath = downloadBtn.getAttribute("data-pdf");
+    const companyName = downloadBtn.getAttribute("data-name");
+    if (!pdfPath) return;
 
-  const link = document.createElement("a");
-  link.href = pdfPath;
-  link.download = pdfPath.split("/").pop();
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+    const link = document.createElement("a");
+    link.href = pdfPath;
+    link.download = pdfPath.split("/").pop();
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 
-  showToast(`Downloading research report for ${companyName}…`, "success");
+    showToast(`Downloading research report for ${companyName}…`, "success");
+    return;
+  }
+
+  if (viewBtn) {
+    const pdfPath = viewBtn.getAttribute("data-pdf");
+    if (!pdfPath) return;
+    window.open(pdfPath, "_blank", "noopener,noreferrer");
+    return;
+  }
 });
 
 document.addEventListener("click", (e) => {
